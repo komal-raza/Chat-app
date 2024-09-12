@@ -1,6 +1,20 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import useSignin from "../hooks/useSignin";
 const Login = () => {
+  const [signinForm, setSigninForm] = useState({
+    username: "",
+    password: "",
+  });
+
+  const { signin, isLoading } = useSignin();
+
+  const onSignin = async (e) => {
+    e.preventDefault();
+    console.log(signinForm);
+    await signin(signinForm);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
@@ -10,7 +24,7 @@ const Login = () => {
 
         {/* Form */}
 
-        <form>
+        <form onSubmit={onSignin}>
           <div>
             <label htmlFor="" className="label p-2">
               <span className="text-base label-text">Username</span>
@@ -19,6 +33,10 @@ const Login = () => {
               type="text"
               placeholder="Enter username"
               className="w-full input input-bordered h-10"
+              value={signinForm?.username}
+              onChange={(e) =>
+                setSigninForm((prev) => ({ ...prev, username: e.target.value }))
+              }
             />
           </div>
           <div>
@@ -26,21 +44,32 @@ const Login = () => {
               <span className="text-base label-text">Passowrd</span>
             </label>
             <input
-              type="text"
+              type="password"
               placeholder="Enter password"
               className="w-full input input-bordered h-10"
+              value={signinForm?.password}
+              onChange={(e) =>
+                setSigninForm((prev) => ({ ...prev, password: e.target.value }))
+              }
             />
           </div>
 
-          <a
-            href="#"
+          <Link
+            to="/signup"
             className="text-sm hover:underline hover:text-blue-900 mt-2 inline-block"
           >
             {"Don't"} have an account?
-          </a>
+          </Link>
 
           <div>
-            <button className="btn btn-block btn-sm mt-2"> Sign in</button>
+            <button
+              type="submit"
+              className={`btn btn-block btn-sm mt-2 ${
+                isLoading && "disabled cursor-not-allowed"
+              }`}
+            >
+              {isLoading ? "Signing in" : "Sign in"}
+            </button>
           </div>
         </form>
       </div>

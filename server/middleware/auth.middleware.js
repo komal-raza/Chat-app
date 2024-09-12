@@ -28,7 +28,7 @@ const checkUserAuth = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
-    console.log(err);
+    console.log(error, "Error for auth");
     res.status(500).json({ message: "Invalid Credentials" });
   }
 };

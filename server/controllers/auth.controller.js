@@ -23,9 +23,9 @@ async function SignupUser(req, res) {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const boyProfilePic = ` https://avatar.iran.liara.run/public/boy?username=${username}`;
+    const boyProfilePic = `https://images.unsplash.com/photo-1724893973738-a80d90811389?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2MHx8fGVufDB8fHx8fA%3D%3D`;
 
-    const girlProfilePic = ` https://avatar.iran.liara.run/public/girl?username=${username}`;
+    const girlProfilePic = `https://plus.unsplash.com/premium_photo-1675107359599-a2d0d8983c36?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMTJ8fHxlbnwwfHx8fHw%3D`;
 
     const newUser = new UserModel({
       fullName,
@@ -78,6 +78,7 @@ async function SigninUser(req, res) {
     generateToken(UserNameExist?._id, res);
 
     res.status(200).json({
+      _id:UserNameExist?._id,
       fullName: UserNameExist?.fullName,
       email: UserNameExist?.email,
       username: UserNameExist?.username,
