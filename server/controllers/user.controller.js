@@ -8,7 +8,7 @@ const GetUsers = async (req, res) => {
 
     res.status(200).json(users);
   } catch (error) {
-    console.log(error, "User fetching failed");
+    // console.log(error, "User fetching failed");
     res.status(500).json({ message: "Internal Server Error" });
   }
 };

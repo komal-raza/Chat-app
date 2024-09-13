@@ -9,7 +9,7 @@ async function SignupUser(req, res) {
     const { username, email, password, confirmPassword, gender, fullName } =
       req.body;
 
-      console.log(req.body,"Signup ")
+      // console.log(req.body,"Signup ")
     if (password !== confirmPassword) {
       return res.status(400).json({ message: "Password don't match" });
     }
@@ -46,7 +46,7 @@ async function SignupUser(req, res) {
       profilePic: newUser?.profilePic,
     });
   } catch (error) {
-    console.log(error, "Signup user");
+    // console.log(error, "Signup user");
     return res.status(500).json({ message: error.message });
   }
 }
@@ -72,7 +72,7 @@ async function SigninUser(req, res) {
     if (!matchPassword)
       return res.status(400).json({ message: "Password is not correct" });
 
-    console.log(UserNameExist);
+    // console.log(UserNameExist);
 
     // Generate Token
     generateToken(UserNameExist?._id, res);
@@ -85,7 +85,7 @@ async function SigninUser(req, res) {
       profilePic: UserNameExist?.profilePic,
     });
   } catch (error) {
-    console.log(error, "Signin user");
+    // console.log(error, "Signin user");
     return res.status(500).json({ message: error.message });
   }
 }

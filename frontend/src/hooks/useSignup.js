@@ -39,7 +39,7 @@ const useSignup = () => {
 
 
       const result = await res.json();
-      console.log(result,"Sign up success");
+      // console.log(result,"Sign up success");
       setIsLoading(false);
       navigate("/login")
     } catch (error) {

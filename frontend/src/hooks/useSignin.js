@@ -23,14 +23,14 @@ const useSignin = () => {
 
       if (result.error) {
         throw new Error(result.error);
-      }
-
-      //   Save user in auth context
+      }else{
+         //   Save user in auth context
 
       localStorage.setItem("auth-user", JSON.stringify(result));
 
       setAuthUser(result);
-      console.log(result, "Sign in");
+      }
+      // console.log(result, "Sign in");
     } catch (error) {
       toast.error(error.message);
       console.log(error);

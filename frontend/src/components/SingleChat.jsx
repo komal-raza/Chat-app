@@ -5,10 +5,7 @@ import { extractTime } from "../utils/extractTime";
 
 const SingleChat = ({ message }) => {
   const { authUser } = useAuthContext();
-
   const { selectedConversation } = useConversation();
-
-  console.log(authUser, "Logged inuser");
 
   const loggedInUser = message.senderId === authUser?._id;
   const chatClassName = loggedInUser ? "chat-end" : "chat-start";
@@ -19,6 +16,7 @@ const SingleChat = ({ message }) => {
     ? authUser?.profilePic
     : selectedConversation?.profilePic;
 
+  const shakeText = message.shouldShake ? "shake" : "";
   const formattedDate = extractTime(message.createdAt);
   return (
     <div>
@@ -28,7 +26,7 @@ const SingleChat = ({ message }) => {
             <img alt={authUser?.fullName} src={profilePic} />
           </div>
         </div>
-        <div className={`chat-bubble ${chatBackgroundColor}`}>
+        <div className={`chat-bubble ${chatBackgroundColor} ${shakeText}`}>
           {message?.message}
         </div>
         <div className="mt-1 chat-footer opacity-50 text-xs text-green-100 flex gap-1 items-center">

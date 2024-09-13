@@ -24,7 +24,7 @@ const Signup = () => {
 
   async function onSignUp(e) {
     e.preventDefault();
-    console.log(signupForm);
+    // console.log(signupForm);
     await signup(signupForm);
     setSignupForm({
       fullName: "",
