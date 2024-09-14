@@ -10,7 +10,6 @@ const path = require("path")
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
-const __dirname = path.resolve();
 
 app.use(express.json());  //parse JSON payload from request body
 app.use(cookieParser());
