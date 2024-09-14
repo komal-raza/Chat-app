@@ -12,6 +12,7 @@ const generateToken = (user_id, res) => {
     httpOnly: true,
     maxAge: 1 * 24 * 60 * 60 * 1000,
     sameSite: "strict",
+    secure:process.env.NODE_ENV !== "development"
   });
 
 //   return token;
