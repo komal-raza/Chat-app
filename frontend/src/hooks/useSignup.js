@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const useSignup = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   async function signup(data) {
     const { fullName, email, username, password, confirmPassword, gender } =
       data;
@@ -37,11 +37,15 @@ const useSignup = () => {
         }),
       });
 
-
       const result = await res.json();
-      // console.log(result,"Sign up success");
+      console.log(result, "Sign up success");
       setIsLoading(false);
-      navigate("/login")
+
+      if (res.ok) {
+        navigate("/login");
+      } else {
+        toast.error("Failed to Sign up new user");
+      }
     } catch (error) {
       toast.error(error.message);
       setIsLoading(false);

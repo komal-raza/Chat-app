@@ -26,7 +26,7 @@ const SingleChat = ({ message }) => {
             <img alt={authUser?.fullName} src={profilePic} />
           </div>
         </div>
-        <div className={`chat-bubble ${chatBackgroundColor} ${shakeText}`}>
+        <div className={`chat-bubble break-words ${chatBackgroundColor} ${shakeText}`}>
           {message?.message}
         </div>
         <div className="mt-1 chat-footer opacity-50 text-xs text-green-100 flex gap-1 items-center">

@@ -21,15 +21,22 @@ const useSignin = () => {
       const result = await response.json();
       setIsLoading(false);
 
+      console.log(result,"Signing in...");
+      
       if (result.error) {
+        toast.error(result.error);
+
         throw new Error(result.error);
-      }else{
-         //   Save user in auth context
+      } else {
+        //   Save user in auth context
 
-      localStorage.setItem("auth-user", JSON.stringify(result));
+        localStorage.setItem("auth-user", JSON.stringify(result));
+        toast.success("Logged in");
 
-      setAuthUser(result);
+        setAuthUser(result);
       }
+      setIsLoading(false);
+
       // console.log(result, "Sign in");
     } catch (error) {
       toast.error(error.message);

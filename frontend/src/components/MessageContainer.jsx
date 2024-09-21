@@ -13,7 +13,7 @@ const MessageContainer = () => {
     return () => setSelectedConversation(null);
   }, [setSelectedConversation]);
   return (
-    <div className="md:min-w-[450px] h-full flex flex-col  ">
+    <div className="xs:min-w-[300px] xs:max-w-[300px]  md:min-w-[450px] overflow-hidden h-full flex flex-col">
       {/* overflow-y-auto */}
       {isChatSelected ? (
         <>

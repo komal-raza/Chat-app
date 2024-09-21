@@ -9,7 +9,7 @@ async function SignupUser(req, res) {
     const { username, email, password, confirmPassword, gender, fullName } =
       req.body;
 
-      // console.log(req.body,"Signup ")
+    // console.log(req.body,"Signup ")
     if (password !== confirmPassword) {
       return res.status(400).json({ message: "Password don't match" });
     }
@@ -23,9 +23,9 @@ async function SignupUser(req, res) {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const boyProfilePic = `https://images.unsplash.com/photo-1724893973738-a80d90811389?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2MHx8fGVufDB8fHx8fA%3D%3D`;
+    const boyProfilePic = "https://avatar.iran.liara.run/public/boy";
 
-    const girlProfilePic = `https://plus.unsplash.com/premium_photo-1675107359599-a2d0d8983c36?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMTJ8fHxlbnwwfHx8fHw%3D`;
+    const girlProfilePic = "https://avatar.iran.liara.run/public/girl";
 
     const newUser = new UserModel({
       fullName,
@@ -78,7 +78,7 @@ async function SigninUser(req, res) {
     generateToken(UserNameExist?._id, res);
 
     res.status(200).json({
-      _id:UserNameExist?._id,
+      _id: UserNameExist?._id,
       fullName: UserNameExist?.fullName,
       email: UserNameExist?.email,
       username: UserNameExist?.username,
@@ -98,8 +98,7 @@ async function SignoutUser(req, res) {
       sameSite: "strict",
     });
 
-
-    res.status(200).json({ message:"Logout successfully"})
+    res.status(200).json({ message: "Logout successfully" });
   } catch (error) {
     console.log(error, "Signout user failed");
   }
