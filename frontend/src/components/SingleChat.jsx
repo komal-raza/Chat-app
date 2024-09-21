@@ -7,7 +7,6 @@ const SingleChat = ({ message }) => {
   const { authUser } = useAuthContext();
   const { selectedConversation } = useConversation();
 
-  console.log(selectedConversation, "Single hat");
 
   const loggedInUser = message.senderId === authUser?._id;
   const chatClassName = loggedInUser ? "chat-end" : "chat-start";
