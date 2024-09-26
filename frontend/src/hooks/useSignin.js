@@ -21,8 +21,8 @@ const useSignin = () => {
       const result = await response.json();
       setIsLoading(false);
 
-      console.log(result,"Signing in...");
-      
+      // console.log(result,"Signing in...");
+      localStorage.removeItem("auth-user");
       if (result.error) {
         toast.error(result.error);
 
